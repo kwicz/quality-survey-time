@@ -8,7 +8,7 @@ import { connect } from 'react-redux';
 import { withFirestore } from 'react-redux-firebase';
 
 function SurveyController(props) {
-  const handleUpdateSelectedSurvey = () => {};
+  const handleUpdateSelectedSurvey = (id) => {};
 
   return (
     <div>
