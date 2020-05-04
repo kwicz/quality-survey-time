@@ -8,6 +8,8 @@ import { connect } from 'react-redux';
 import { withFirestore } from 'react-redux-firebase';
 
 function SurveyController(props) {
+  const handleUpdateSelectedSurvey = () => {};
+
   return (
     <div>
       SurveyController
@@ -20,5 +22,10 @@ function SurveyController(props) {
 }
 
 SurveyController.propTypes = {};
+const mapStateToProps = (state) => {
+  return state;
+};
 
-export default SurveyController;
+// eslint-disable-next-line
+SurveyController = connect(mapStateToProps)(SurveyController);
+export default withFirestore(SurveyController);

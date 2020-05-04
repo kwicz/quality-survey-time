@@ -17,7 +17,12 @@ function SurveyItem(props) {
       </Card.Header>
       <Card.Body>
         <p>Question: {props.surveyObj.question1}</p>
-        <DropdownButton key="secondary" id={`dropdown-variants-secondary`} variant={'secondary'} title={'Answers'}>
+        <DropdownButton
+          key="secondary"
+          id={`dropdown-variants-secondary`}
+          variant={'secondary'}
+          defaultValue={'Answers'}
+        >
           <Dropdown.Item eventKey="1">{props.surveyObj.answer1}</Dropdown.Item>
           <Dropdown.Item eventKey="2">{props.surveyObj.answer2}</Dropdown.Item>
           <Dropdown.Item eventKey="3">{props.surveyObj.answer3}</Dropdown.Item>
@@ -25,6 +30,9 @@ function SurveyItem(props) {
 
         <Button onClick={deleteSurvey} variant="danger">
           Delete
+        </Button>
+        <Button variant="info" onClick={props.onClickingEdit}>
+          Edit
         </Button>
       </Card.Body>
     </Card>

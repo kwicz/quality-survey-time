@@ -19,6 +19,7 @@ function SurveyCreate(props) {
 
   return (
     <div>
+      <h1>ADD FORM</h1>
       <Form onSubmit={addSurveyToFirestore}>
         <Form.Group controlId="formBasicEmail">
           <Form.Label>name</Form.Label>
