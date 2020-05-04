@@ -4,6 +4,8 @@ import SurveyCreate from './SurveyCreate';
 import SurveyEdit from './SurveyEdit';
 import SurveyList from './SurveyList';
 import SurveySubmit from './SurveySubmit';
+import { connect } from 'react-redux';
+import { withFirestore } from 'react-redux-firebase';
 
 function SurveyController(props) {
   return (
