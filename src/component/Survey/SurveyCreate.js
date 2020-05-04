@@ -4,11 +4,11 @@ import { useFirestore } from 'react-redux-firebase';
 import { Form, Button } from 'react-bootstrap';
 
 function SurveyCreate(props) {
-  const firestore = useFirestore();
+  const surveys = useFirestore().collection('surveys');
 
   function addSurveyToFirestore(event) {
     event.preventDefault();
-    return firestore.collection('surveys').add({
+    return surveys.add({
       name: event.target.name.value,
       question1: event.target.question1.value,
       answer1: event.target.answer1.value,
