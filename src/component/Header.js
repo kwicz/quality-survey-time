@@ -9,19 +9,18 @@ function Header() {
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="mr-auto">
-          <Link to="/signin">
-            <Nav.Link href="/">Sign In</Nav.Link>
-          </Link>
-
           <Link to="/">
             <Nav.Link href="/">Make Survey</Nav.Link>
+          </Link>
+          <Link to="/takesurvey">
+            <Nav.Link href="/">Take Survey</Nav.Link>
           </Link>
         </Nav>
         <Nav>
           <Link to="/signin">
             <Nav.Link href="/">Login</Nav.Link>
           </Link>
-          <Link to="/signin">
+          <Link to="/signup">
             <Nav.Link href="/signup">Sign Up</Nav.Link>
           </Link>
           <Link to="/signout">
