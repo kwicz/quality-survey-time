@@ -80,14 +80,14 @@ function App(props) {
           <Route path="/surveydetails">
             <Row>
               <Col md={{ span: 8, offset: 2 }}>
-                <SurveyDetails onSurveyClick={handleUpdateSelectedSurvey}/>
+                <SurveyDetails />
               </Col>
             </Row>
           </Route>
           <Route path="/">
             <Row>
               <Col md={{ span: 8, offset: 2 }}>
-                <Dashboard />
+                <Dashboard onSurveySelect={handleUpdateSelectedSurvey}/>
               </Col>
             </Row>
           </Route>

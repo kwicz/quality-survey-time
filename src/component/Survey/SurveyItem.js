@@ -15,6 +15,7 @@ function SurveyItem(props) {
       type: "UPDATE_SELECTED",
       id: surveyObj.id,
       name: surveyObj.name,
+      authorEmail: surveyObj.authorEmail,
       question1: surveyObj.question1,
       answer1: surveyObj.answer1,
       answer2: surveyObj.answer2,

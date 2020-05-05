@@ -22,6 +22,7 @@ function Signin() {
       .then(() => {
         setSuccessMessage('successfully signed in');
         console.log('successfully signed in');
+        console.log(firebase.auth().currentUser)
       })
       .catch((err) => {
         setErrorMessage(err.message);

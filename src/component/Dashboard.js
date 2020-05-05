@@ -1,17 +1,45 @@
 import React from 'react';
 import { Card, Button, Row, Col } from 'react-bootstrap';
-import { useFirestoreConnect, isLoaded, isEmpty, firestore } from 'react-redux-firebase';
+import { useFirestoreConnect, isEmpty, firestore, useFirestore, withFirestore, isLoaded } from 'react-redux-firebase';
 import { useSelector } from 'react-redux';
 import {Link} from 'react-router-dom';
+import firebase from 'firebase/app';
 
 
 function Dashboard(props) {
+  
+  const surveys = useSelector(state => state.firestore.ordered.surveys)
+  const auth = firebase.auth();
+  let renderList;
+
+  if (isLoaded(surveys) && isLoaded(auth) && auth.currentUser != null) {
+    var user = auth.currentUser;
+    
+    renderList = surveys.filter((item) => { return item.authorId === user.uid } ).map((a) => 
+    <Link onClick={() => {handleSurveyClick(a)}} to='surveydetails' id={a.id} key={a.id} title={a.name}>
+      <li>{a.name}</li>
+      </Link>);
+  } else {
+    renderList = 'loading...';
+  }
+  
+  function handleSurveyClick(surveyObj) {
+    const action = { 
+      type: "UPDATE_SELECTED",
+      id: surveyObj.id,
+      authorEmail: surveyObj.authorEmail,
+      name: surveyObj.name,
+      question1: surveyObj.question1,
+      answer1: surveyObj.answer1,
+      answer2: surveyObj.answer2,
+      answer3: surveyObj.answer3
+    }
+    props.onSurveySelect(action)
+  }
 
   useFirestoreConnect([
     { collection: 'surveys' }
   ])
-
-  const surveys = useSelector(state => state.firestore.ordered.surveys)
 
   // const userSurveys = surveys.where('userName', '==', 'thisUser' );
 
@@ -21,13 +49,7 @@ function Dashboard(props) {
     // firestore.delete({ collection: 'surveys', doc: id });
   }
 
-  let renderList;
 
-  if (isLoaded(surveys)) {
-    renderList = surveys.map((a) => <Link onClick='' to='surveydetails'><li>{a.title}</li></Link>);
-  } else {
-    renderList = 'loading...';
-  }
 
   return (
     <React.Fragment>
