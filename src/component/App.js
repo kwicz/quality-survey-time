@@ -2,15 +2,22 @@ import React from 'react';
 import SurveyController from './Survey/SurveyController';
 import Header from './Header';
 import { Container } from 'react-bootstrap';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import Signin from './Signin/Signin';
 
 function App() {
   return (
-    <React.Fragment>
+    <Router>
       <Header />
-      <Container>
-        <SurveyController />
-      </Container>
-    </React.Fragment>
+      <Switch>
+        <Route path="/signin">
+          <Signin />
+        </Route>
+        <Route path="/">
+          <SurveyController />
+        </Route>
+      </Switch>
+    </Router>
   );
 }
 
