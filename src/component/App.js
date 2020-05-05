@@ -12,8 +12,17 @@ import SurveyList from './Survey/SurveyList';
 import SurveySubmit from './Survey/SurveySubmit';
 import Dashboard from './Dashboard';
 import SurveyDetails from './Survey/SurveyDetails';
+import { connect } from 'react-redux';
 
-function App() {
+
+function App(props) {
+  
+  const { surveyObj, dispatch } = props;
+
+  function handleUpdateSelectedSurvey(action) {  
+    dispatch(action);
+  }
+
   return (
     <Router>
       <Header />
@@ -50,7 +59,14 @@ function App() {
           <Route path="/takesurvey">
             <Row>
               <Col md={{ span: 8, offset: 2 }}>
-                <SurveyList />
+                <SurveyList onSurveyClick={handleUpdateSelectedSurvey}/>
+              </Col>
+            </Row>
+          </Route>
+          <Route path="/submitsurvey">
+            <Row>
+              <Col md={{ span: 8, offset: 2 }}>
+                <SurveySubmit />
               </Col>
             </Row>
           </Route>
@@ -64,7 +80,7 @@ function App() {
           <Route path="/surveydetails">
             <Row>
               <Col md={{ span: 8, offset: 2 }}>
-                <SurveyDetails />
+                <SurveyDetails onSurveyClick={handleUpdateSelectedSurvey}/>
               </Col>
             </Row>
           </Route>
@@ -80,5 +96,10 @@ function App() {
     </Router>
   );
 }
-
+const mapStateToProps = (state) => {
+  return {
+    selectedSurvey: state.selectedSurvey
+  }
+}
+App = connect(mapStateToProps)(App)
 export default App;

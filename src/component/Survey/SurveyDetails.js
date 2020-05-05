@@ -1,9 +1,23 @@
 import React from 'react';
-import { Card } from 'react-bootstrap';
+import PropTypes from 'prop-types';
+import { Card, Button } from 'react-bootstrap';
 import SurveyItem from './SurveyItem';
+import { useFirestore } from 'react-redux-firebase';
+import { Link } from 'react-router-dom';
 
 function SurveyDetails(props) {
   const { title, author, q1, a1, a2, a3 } = props;
+  // const { onClickingEdit } = props;
+
+  const firestore = useFirestore();
+
+  function onClickingEdit() {
+    console.log('edit button click');
+  }
+
+  function deleteSurvey(id) {
+    firestore.delete({ collection: 'surveys', doc: id });
+  }
 
   return (
     <React.Fragment>
@@ -19,9 +33,22 @@ function SurveyDetails(props) {
           <p>Answer 2: {a2} </p>
           <p>Answer 3: {a3} </p>
         </Card.Body>
+
+        <Button onClick={deleteSurvey} variant="danger">
+          Delete
+        </Button>
+        <Link to="/editsurvey">
+          <Button variant="info" onClick={onClickingEdit}>
+            Edit
+          </Button>
+        </Link>
       </Card>
     </React.Fragment>
   );
 }
+
+SurveyItem.propTypes = {
+  onClickingEdit: PropTypes.func
+};
 
 export default SurveyDetails;
