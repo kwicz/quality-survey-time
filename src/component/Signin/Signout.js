@@ -1,6 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { Card, Form, Button } from 'react-bootstrap';
+import { Card, Button } from 'react-bootstrap';
 import firebase from 'firebase/app';
 
 function Signout() {
@@ -25,8 +24,10 @@ function Signout() {
       <Card.Header>
         <h1>Sign Out</h1>
       </Card.Header>
-      <Card.Body>
-        <button onClick={doSignOut}>Sign out</button>
+      <Card.Body className="text-center">
+        <Button size="lg" variant="outline-success" onClick={doSignOut}>
+          Sign out
+        </Button>
       </Card.Body>
     </Card>
   );

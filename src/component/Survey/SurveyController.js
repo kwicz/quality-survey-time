@@ -27,7 +27,7 @@ function SurveyController(props) {
   if (isLoaded(auth) && auth.currentUser != null) {
     return (
       <div>
-        SurveyController
+        Survey Controller Components
         <SurveyList />
         <SurveyCreate />
         <SurveyEdit />

@@ -53,6 +53,4 @@ function SurveyEdit(props) {
   );
 }
 
-SurveyEdit.propTypes = {};
-
 export default SurveyEdit;

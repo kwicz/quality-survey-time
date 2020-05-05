@@ -9,6 +9,8 @@ import Signout from './Signin/Signout';
 import SurveyCreate from './Survey/SurveyCreate';
 import SurveyEdit from './Survey/SurveyEdit';
 import SurveyList from './Survey/SurveyList';
+import SurveySubmit from './Survey/SurveySubmit';
+import Dashboard from './Dashboard';
 
 function App() {
   return (
@@ -37,17 +39,24 @@ function App() {
               </Col>
             </Row>
           </Route>
-          <Route path="/">
-            <Row>
-              <Col md={{ span: 8, offset: 2 }}>
-                <SurveyController />
-              </Col>
-            </Row>
-          </Route>
           <Route path="/makesurvey">
             <Row>
               <Col md={{ span: 8, offset: 2 }}>
-                <SurveyController />
+                <SurveyCreate />
+              </Col>
+            </Row>
+          </Route>
+          <Route path="/takesurvey">
+            <Row>
+              <Col md={{ span: 8, offset: 2 }}>
+                <SurveyList />
+              </Col>
+            </Row>
+          </Route>
+          <Route path="/">
+            <Row>
+              <Col md={{ span: 8, offset: 2 }}>
+                <Dashboard />
               </Col>
             </Row>
           </Route>

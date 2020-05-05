@@ -5,11 +5,13 @@ import { Link } from 'react-router-dom';
 function Header() {
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-      <Navbar.Brand href="">Quality Survey Time</Navbar.Brand>
+      <Link to="/">
+        <Navbar.Brand href="">Quality Survey Time</Navbar.Brand>
+      </Link>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="mr-auto">
-          <Link to="/">
+          <Link to="/makesurvey">
             <Nav.Link href="/">Make Survey</Nav.Link>
           </Link>
           <Link to="/takesurvey">
