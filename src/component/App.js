@@ -11,6 +11,7 @@ import SurveyEdit from './Survey/SurveyEdit';
 import SurveyList from './Survey/SurveyList';
 import SurveySubmit from './Survey/SurveySubmit';
 import Dashboard from './Dashboard';
+import SurveyDetails from './Survey/SurveyDetails';
 
 function App() {
   return (
@@ -50,6 +51,20 @@ function App() {
             <Row>
               <Col md={{ span: 8, offset: 2 }}>
                 <SurveyList />
+              </Col>
+            </Row>
+          </Route>
+          <Route path="/editsurvey">
+            <Row>
+              <Col md={{ span: 8, offset: 2 }}>
+                <SurveyEdit />
+              </Col>
+            </Row>
+          </Route>
+          <Route path="/surveydetails">
+            <Row>
+              <Col md={{ span: 8, offset: 2 }}>
+                <SurveyDetails />
               </Col>
             </Row>
           </Route>

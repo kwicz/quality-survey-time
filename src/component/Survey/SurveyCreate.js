@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useFirestore } from 'react-redux-firebase';
 import { Form, Button } from 'react-bootstrap';
+import firebase from 'firebase/app';
+import { Redirect } from 'react-router-dom';
 
 function SurveyCreate(props) {
   const surveys = useFirestore().collection('surveys');
@@ -17,40 +19,44 @@ function SurveyCreate(props) {
     });
   }
 
-  return (
-    <div>
-      <h1>ADD FORM</h1>
-      <Form onSubmit={addSurveyToFirestore}>
-        <Form.Group controlId="formBasicEmail">
-          <Form.Label>name</Form.Label>
-          <Form.Control type="text" name="name" placeholder="Survey Name" />
-          <Form.Text className="text-muted">Survey Name</Form.Text>
-        </Form.Group>
+  if (firebase.auth().currentUser === null) {
+    return <Redirect to="signin" />;
+  } else {
+    return (
+      <div>
+        <h1>ADD FORM</h1>
+        <Form onSubmit={addSurveyToFirestore}>
+          <Form.Group controlId="formBasicEmail">
+            <Form.Label>name</Form.Label>
+            <Form.Control type="text" name="name" placeholder="Survey Name" />
+            <Form.Text className="text-muted">Survey Name</Form.Text>
+          </Form.Group>
 
-        <Form.Group controlId="formBasicQuestion">
-          <Form.Label>Question 1</Form.Label>
-          <Form.Control type="text" name="question1" placeholder="Question" />
-        </Form.Group>
+          <Form.Group controlId="formBasicQuestion">
+            <Form.Label>Question 1</Form.Label>
+            <Form.Control type="text" name="question1" placeholder="Question" />
+          </Form.Group>
 
-        <Form.Group controlId="formBasicQuestion">
-          <Form.Label>answer1</Form.Label>
-          <Form.Control type="text" name="answer1" placeholder="Answer option" />
-        </Form.Group>
-        <Form.Group controlId="formBasicQuestion">
-          <Form.Label>answer2</Form.Label>
-          <Form.Control type="text" name="answer2" placeholder="Answer option" />
-        </Form.Group>
-        <Form.Group controlId="formBasicQuestion">
-          <Form.Label>answer3</Form.Label>
-          <Form.Control type="text" name="answer3" placeholder="Answer option" />
-        </Form.Group>
+          <Form.Group controlId="formBasicQuestion">
+            <Form.Label>answer1</Form.Label>
+            <Form.Control type="text" name="answer1" placeholder="Answer option" />
+          </Form.Group>
+          <Form.Group controlId="formBasicQuestion">
+            <Form.Label>answer2</Form.Label>
+            <Form.Control type="text" name="answer2" placeholder="Answer option" />
+          </Form.Group>
+          <Form.Group controlId="formBasicQuestion">
+            <Form.Label>answer3</Form.Label>
+            <Form.Control type="text" name="answer3" placeholder="Answer option" />
+          </Form.Group>
 
-        <Button variant="primary" type="submit">
-          Submit
-        </Button>
-      </Form>
-    </div>
-  );
+          <Button variant="primary" type="submit">
+            Submit
+          </Button>
+        </Form>
+      </div>
+    );
+  }
 }
 
 SurveyCreate.propTypes = {};

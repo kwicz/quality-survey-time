@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Card, Dropdown, DropdownButton, Button } from 'react-bootstrap';
 import { useFirestore } from 'react-redux-firebase';
+import { Link } from 'react-router-dom';
 
 function SurveyItem(props) {
   const { onClickingEdit, surveyObj } = props;
@@ -35,9 +36,11 @@ function SurveyItem(props) {
         <Button onClick={deleteSurvey} variant="danger">
           Delete
         </Button>
-        <Button variant="info" onClick={onClickingEdit}>
-          Edit
-        </Button>
+        <Link to="/editsurvey">
+          <Button variant="info" onClick={onClickingEdit}>
+            Edit
+          </Button>
+        </Link>
       </Card.Body>
     </Card>
   );
