@@ -1,7 +1,7 @@
 *Wednesday*
+- go directly to dashboard after user signs in. 
 - take survey.
 - log that they took a survey.
-- go directly to dashboard after user signs in. 
 - update survey making to be awesome. 
 
 

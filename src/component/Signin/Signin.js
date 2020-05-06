@@ -2,10 +2,12 @@ import React, { useState } from 'react';
 import { Card, Form, Button } from 'react-bootstrap';
 import firebase from 'firebase/app';
 import FlashMessage from './FlashMessage';
+import {useHistory} from 'react-router-dom';
 
 function Signin() {
   const [ successMessage, setSuccessMessage ] = useState('');
   const [ errorMessage, setErrorMessage ] = useState('');
+  const history = useHistory();
 
   const cardStyle = {
     marginTop: '3rem'
@@ -21,12 +23,11 @@ function Signin() {
       .signInWithEmailAndPassword(email, password)
       .then(() => {
         setSuccessMessage('successfully signed in');
-        console.log('successfully signed in');
-        console.log(firebase.auth().currentUser)
+        history.push('/');
+
       })
       .catch((err) => {
         setErrorMessage(err.message);
-        console.log(err.message);
       });
   }
 

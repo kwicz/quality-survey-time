@@ -5,13 +5,12 @@ import { useSelector } from 'react-redux';
 import {Link} from 'react-router-dom';
 import firebase from 'firebase/app';
 
-
 function Dashboard(props) {
   
   const surveys = useSelector(state => state.firestore.ordered.surveys)
   const auth = firebase.auth();
   let renderList;
-
+  
   if (isLoaded(surveys) && isLoaded(auth) && auth.currentUser != null) {
     var user = auth.currentUser;
     
@@ -49,28 +48,52 @@ function Dashboard(props) {
     // firestore.delete({ collection: 'surveys', doc: id });
   }
 
-
-
-  return (
-    <React.Fragment>
-      <h1>Your Dashboard</h1>
-      <Row>
-        <Col>
-          <Card>
-            <Card.Title>Surveys You've Created</Card.Title>
-            <Card.Body>
-              {renderList}
-            </Card.Body>
-          </Card>
-        </Col>
-        <Col>
-          <Card>
-            <Card.Title>Surveys You've Taken</Card.Title>
-          </Card>
-        </Col>
-      </Row>
-    </React.Fragment>
-  );
+  console.log("USER  ===>",user)
+  if (isLoaded(auth) && auth.currentUser != null) {
+    return (
+      <React.Fragment>
+        <h1>Welcome, {user.email}!</h1>
+        <h1>Your Dashboard</h1>
+        <Row>
+          <Col>
+            <Card>
+              <Card.Title>Surveys You've Created</Card.Title>
+              <Card.Body>
+                {renderList}
+              </Card.Body>
+            </Card>
+          </Col>
+          <Col>
+            <Card>
+              <Card.Title>Surveys You've Taken</Card.Title>
+            </Card>
+          </Col>
+        </Row>
+      </React.Fragment>
+    );
+  } else {
+    return (
+      <React.Fragment>
+        <h1>Welcome, stranger!</h1>
+        <h1>Your Dashboard</h1>
+        <Row>
+          <Col>
+            <Card>
+              <Card.Title>Surveys You've Created</Card.Title>
+              <Card.Body>
+                {renderList}
+              </Card.Body>
+            </Card>
+          </Col>
+          <Col>
+            <Card>
+              <Card.Title>Surveys You've Taken</Card.Title>
+            </Card>
+          </Col>
+        </Row>
+      </React.Fragment>
+    )
+  }
 }
 
 export default Dashboard;
