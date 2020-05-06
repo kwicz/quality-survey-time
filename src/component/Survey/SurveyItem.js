@@ -11,22 +11,18 @@ function SurveyItem(props) {
   const firestore = useFirestore();
 
   function handleTakeSurveyClick() {
+    console.log("SURVEYOBJ: ", surveyObj)
     const action = { 
       type: "UPDATE_SELECTED",
-      id: surveyObj.id,
       name: surveyObj.name,
-      authorEmail: surveyObj.authorEmail,
-      question1: surveyObj.question1,
-      answer1: surveyObj.answer1,
-      answer2: surveyObj.answer2,
-      answer3: surveyObj.answer3
+      survey: surveyObj.survey,
+      surveyId: surveyObj.id,
+      authorEmail: surveyObj.authorEmail, 
+      authorId: surveyObj.authorId,
     }
     props.whereSurveyClicked(action);
     history.push('/submitsurvey');
-
   }
-
-  
 
   return (
     <Card>

@@ -1,9 +1,9 @@
 export default (state = '', action) => {
-  const { id, name, question1, answer1, answer2, answer3, authorEmail } = action;
+  const { surveyId, authorEmail, authorId, name, survey } = action;
 
   switch (action.type) {
     case 'UPDATE_SELECTED':
-      const newSelected = { id, name, question1, answer1, answer2, answer3, authorEmail };
+      const newSelected = { surveyId, authorEmail, authorId, name, survey };
       return newSelected;
     default:
       return state;

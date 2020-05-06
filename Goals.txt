@@ -2,8 +2,8 @@
 - go directly to dashboard after user signs in. 
 - take survey.
 - log that they took a survey.
-- update survey making to be awesome. 
-
+- update survey making to be awesome.
+- Search function
 
 *Thursday*
 - deploying. google firebase.

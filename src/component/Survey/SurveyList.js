@@ -13,7 +13,9 @@ function SurveyList(props) {
 
   let renderList;
 
-  if (isLoaded(surveys)) {
+  if (isEmpty(surveys)) {
+    renderList = <h2>No surveys have been created yet!</h2>
+  } else if (isLoaded(surveys)) {
     renderList = surveys.map((a) => <SurveyItem surveyObj={a} key={a.id} whereSurveyClicked={props.onSurveyClick} />);
   } else {
     renderList = 'loading...';

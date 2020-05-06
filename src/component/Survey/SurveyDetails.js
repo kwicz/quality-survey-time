@@ -8,7 +8,7 @@ import { connect } from 'react-redux';
 import { useHistory } from "react-router-dom";
 
 function SurveyDetails(props) {
-  const { name, authorEmail, question1, answer1, answer2, answer3, id} = props.selectedSurvey;
+  const { name, authorEmail, question1, answer1, answer2, answer3, surveyId} = props.selectedSurvey;
 
   const history = useHistory();
 
@@ -19,7 +19,7 @@ function SurveyDetails(props) {
   }
 
   function deleteSurvey() {
-    firestore.delete({ collection: 'surveys', doc: id });
+    firestore.delete({ collection: 'surveys', doc: surveyId });
     history.push('/');
   }
 
