@@ -1,12 +1,13 @@
 *Wednesday*
-- go directly to dashboard after user signs in. 
-- take survey.
+X go directly to dashboard after user signs in. 
+X take survey.
 - log that they took a survey.
-- update survey making to be awesome.
+X update survey making to be awesome.
 - Search function
 
 *Thursday*
 - deploying. google firebase.
 - data visualization.
 - make pretty.
-- 
+- New page that shows how you answered surveys
+- # of times survey has been taken on survey details page

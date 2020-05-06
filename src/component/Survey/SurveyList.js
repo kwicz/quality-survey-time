@@ -7,7 +7,7 @@ import { useFirestoreConnect, isLoaded, isEmpty } from 'react-redux-firebase';
 
 function SurveyList(props) {
   useFirestoreConnect([ { collection: 'surveys' } ]);
-  const {dispatch} = props;
+  // const {dispatch} = props;
 
   const surveys = useSelector((state) => state.firestore.ordered.surveys);
 
