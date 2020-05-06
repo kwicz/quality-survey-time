@@ -2,13 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Card, Button } from 'react-bootstrap';
 import SurveyItem from './SurveyItem';
-import { useFirestore } from 'react-redux-firebase';
+import { useFirestore, isLoaded } from 'react-redux-firebase';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { useHistory } from "react-router-dom";
 
 function SurveyDetails(props) {
-  const { name, authorEmail, question1, answer1, answer2, answer3, surveyId} = props.selectedSurvey;
+  const { name, authorEmail, survey, surveyId} = props.selectedSurvey;
 
   const history = useHistory();
 
@@ -32,10 +32,16 @@ function SurveyDetails(props) {
         <Card.Body>
           <p>Survey Title: {name}</p>
           <p>Created By: {authorEmail}</p>
-          <p>Question 1: {question1} </p>
-          <p>Answer 1: {answer1} </p>
-          <p>Answer 2: {answer2} </p>
-          <p>Answer 3: {answer3} </p>
+          {survey.map((item) => {
+           return ( <div>
+            <p>Question 1: {item.question} </p>
+            <p>Answer 1: {item.answers[0]} </p>
+            <p>Answer 2: {item.answers[1]} </p>
+            <p>Answer 3: {item.answers[2]} </p> 
+            </div>
+            )
+          })}
+          
         </Card.Body>
 
         <Button onClick={deleteSurvey} variant="danger">

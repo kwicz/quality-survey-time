@@ -43,8 +43,18 @@ function Dashboard(props) {
     props.onSurveySelect(action)
   }
 
+  if (isLoaded(submissions) && isLoaded(auth) && auth.currentUser != null) {
+    var user = auth.currentUser;   
+    renderSubmissionList = submissions.filter((item) => { return item.userId === user.uid } ).map((a) => 
+    <Link onClick={() => {handleSurveyClick(a)}} to='surveydetails' id={a.id} key={a.id} title={a.name}>
+      <li>{a.name}</li>
+    </Link>);
+  } else {
+    renderSubmissionList = 'loading...';
+  }
 
-  if (isLoaded(auth) && auth.currentUser != null) {
+
+  if (isLoaded(auth) && auth.currentUser != null && user.email != undefined) {
     return (
       <React.Fragment>
         <h1>Welcome, {user.email}!</h1>
@@ -65,6 +75,9 @@ function Dashboard(props) {
               <Card.Header>
                 <Card.Title>Surveys You've Taken</Card.Title>
               </Card.Header>
+              <Card.Body>
+                {renderSubmissionList}
+              </Card.Body>
             </Card>
           </Col>
         </Row>

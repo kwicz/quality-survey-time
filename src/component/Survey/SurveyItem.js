@@ -8,10 +8,9 @@ import { useHistory } from "react-router-dom";
 function SurveyItem(props) {
   const history = useHistory();
   const { surveyObj, dispatch } = props;
-  const firestore = useFirestore();
+  // const firestore = useFirestore();
 
   function handleTakeSurveyClick() {
-    console.log("SURVEYOBJ: ", surveyObj)
     const action = { 
       type: "UPDATE_SELECTED",
       name: surveyObj.name,

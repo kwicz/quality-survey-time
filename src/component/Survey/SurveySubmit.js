@@ -12,28 +12,8 @@ function SurveySubmit(props) {
   const history = useHistory();
   const [ selected, setSelected ] = useState({})
   
-  console.log("PROPS", props)
-	// const qObj = {
-  //   authorEmail: "email",
-  //   authorId: "Id",
-  //   name: 'title',
-	// 	survey: [
-	// 		{
-	// 			question: 'How would you like your cheese?',
-	// 			answers: [ `By the beach`, `In the grass`, `At your mom's` ]
-	// 		},
-	// 		{
-	// 			question: 'How do you run?',
-	// 			answers: [ `good`, `bad`, `okay` ]
-	// 		}
-	// 	]
-  // };
-  
   function addSubmissionToFirestore(event) {
     event.preventDefault();
-
-    console.log(selected);
-
     history.push('/');
     const submitThis = {
       title: props.selectedSurvey.name,
@@ -43,8 +23,6 @@ function SurveySubmit(props) {
       survey: {...selected}
       
     }
-    console.log("...SELECTED:", submitThis.survey)
-    console.log("SUBMIT THIS: ", submitThis);
     return submissions.add(submitThis);
   }
 
@@ -58,7 +36,7 @@ function SurveySubmit(props) {
 				{/* //questions section */}
 				{props.selectedSurvey.survey.map((q, index) => {
 					return (
-						<Card>
+						<Card style={{ marginBottom: 5 }}>
 							<Card.Header>
 								<Card.Title>
 									Question {index + 1}: {q.question}
