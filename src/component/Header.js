@@ -1,33 +1,33 @@
 import React from 'react';
-import { Navbar, Nav } from 'react-bootstrap';
+import { Navbar, Nav, NavItem } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 function Header() {
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-      <Link to="/">
-        <Navbar.Brand href="">Quality Survey Time</Navbar.Brand>
-      </Link>
+  
+        <Navbar.Brand as={Link} to="/">Quality Survey Time</Navbar.Brand>
+
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="mr-auto">
-          <Link to="/makesurvey">
-            <Nav.Link href="/">Make Survey</Nav.Link>
-          </Link>
-          <Link to="/takesurvey">
-            <Nav.Link href="/">Take Survey</Nav.Link>
-          </Link>
+          <NavItem>
+             <Nav.Link as={Link} to="/makesurvey" > Make Survey </Nav.Link>
+          </NavItem>
+          <Nav.Link as={Link} to="/takesurvey">
+           Take Survey
+          </Nav.Link>
         </Nav>
         <Nav>
-          <Link to="/signin">
-            <Nav.Link href="/">Login</Nav.Link>
-          </Link>
-          <Link to="/signup">
-            <Nav.Link href="/signup">Sign Up</Nav.Link>
-          </Link>
-          <Link to="/signout">
-            <Nav.Link href="/signout">Sign Out</Nav.Link>
-          </Link>
+          <Nav.Link  as={Link} to="/signin">
+            Login
+          </Nav.Link>
+          <Nav.Link as={Link} to="/signup">
+            Sign Up
+          </Nav.Link>
+          <Nav.Link as={Link} to="/signout">
+            Sign Out
+          </Nav.Link>
         </Nav>
       </Navbar.Collapse>
     </Navbar>

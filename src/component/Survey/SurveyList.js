@@ -7,7 +7,6 @@ import { useFirestoreConnect, isLoaded, isEmpty } from 'react-redux-firebase';
 
 function SurveyList(props) {
   useFirestoreConnect([ { collection: 'surveys' } ]);
-  // const {dispatch} = props;
 
   const surveys = useSelector((state) => state.firestore.ordered.surveys);
 
@@ -21,7 +20,11 @@ function SurveyList(props) {
     renderList = 'loading...';
   }
 
-  return <div>{renderList}</div>;
+  return (
+    <React.Fragment>
+      <h1>Choose a Survey to Take</h1>
+      <div>{renderList}</div>
+    </React.Fragment>);
 }
 
 SurveyList.propTypes = {

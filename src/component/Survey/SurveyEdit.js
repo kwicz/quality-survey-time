@@ -74,6 +74,7 @@ const mapStateToProps = (state) => {
   }
 }
 
+// eslint-disable-next-line
 SurveyEdit = connect(mapStateToProps)( SurveyEdit);
 
 export default SurveyEdit;

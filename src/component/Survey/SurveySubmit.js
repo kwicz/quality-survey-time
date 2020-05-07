@@ -36,7 +36,7 @@ function SurveySubmit(props) {
 				{/* //questions section */}
 				{props.selectedSurvey.survey.map((q, index) => {
 					return (
-						<Card style={{ marginBottom: 5 }}>
+						<Card style={{ marginBottom: 5 }} key={index}>
 							<Card.Header>
 								<Card.Title>
 									Question {index + 1}: {q.question}
@@ -45,7 +45,7 @@ function SurveySubmit(props) {
 							<Card.Body>
 							
                 {q.answers.map((answer, index) => (
-                  <Form.Check 
+                  <Form.Check key={answer + index}
                     name={q.question} 
                     type="radio" 
                     id={index} 
@@ -71,6 +71,7 @@ const mapStateToProps = (state) => {
 	};
 };
 
+// eslint-disable-next-line
 SurveySubmit = connect(mapStateToProps)(SurveySubmit);
 
 export default SurveySubmit;

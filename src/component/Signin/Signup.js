@@ -38,17 +38,17 @@ function Signup(props) {
           <Form onSubmit={doSignUp}>
             <Form.Group controlId="SignupEmail">
               <Form.Label>Email address</Form.Label>
-              <Form.Control type="email" placeholder="Enter email" name="email" />
+              <Form.Control type="email" placeholder="Enter email" name="email" autoComplete="username"/>
               <Form.Text className="text-muted">We'll never share your email with anyone else.</Form.Text>
             </Form.Group>
 
             <Form.Group controlId="SignupPassword">
               <Form.Label>Password</Form.Label>
-              <Form.Control type="password" placeholder="Password" required="required" name="password" />
+              <Form.Control type="password" placeholder="Password" required="required" name="password"  autoComplete="new-password"/>
             </Form.Group>
             <Form.Group controlId="PasswordConfirm">
               <Form.Label>Confirm your password</Form.Label>
-              <Form.Control type="password" placeholder="Password" required="required" />
+              <Form.Control type="password" placeholder="Password" required="required" autoComplete="new-password"/>
             </Form.Group>
 
             <Button variant="primary" type="submit">

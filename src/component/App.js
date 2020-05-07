@@ -13,7 +13,15 @@ import SurveySubmissions from './Survey/SurveySubmissions';
 import Dashboard from './Dashboard';
 import SurveyDetails from './Survey/SurveyDetails';
 import { connect } from 'react-redux';
+import styled from 'styled-components';
+import img from '../img/bg03.jpg';
 
+const AppStyle = styled.div`
+  background-image: url(${img});
+  background-size: cover;
+  min-height: 95vh;
+  padding: 50px;
+  `;
 
 function App(props) {
   
@@ -24,8 +32,10 @@ function App(props) {
   }
 
   return (
+    
     <Router>
       <Header />
+        <AppStyle>
       <Container fluid>
         <Switch>
           <Route path="/signin">
@@ -100,6 +110,7 @@ function App(props) {
           </Route>
         </Switch>
       </Container>
+    </AppStyle>
     </Router>
   );
 }
@@ -108,5 +119,6 @@ const mapStateToProps = (state) => {
     selectedSurvey: state.selectedSurvey
   }
 }
+// eslint-disable-next-line
 App = connect(mapStateToProps)(App)
 export default App;

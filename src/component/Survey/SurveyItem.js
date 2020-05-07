@@ -5,10 +5,14 @@ import { connect } from 'react-redux';
 import { useHistory } from "react-router-dom";
 
 function SurveyItem(props) {
+
+  const cardStyle = {
+    margin: '20px',
+  }
+
   const history = useHistory();
   const { surveyObj } = props;
-  // const firestore = useFirestore();
-
+  
   function handleTakeSurveyClick() {
     const action = { 
       type: "UPDATE_SELECTED",
@@ -23,7 +27,7 @@ function SurveyItem(props) {
   }
 
   return (
-    <Card>
+    <Card style={cardStyle}>
       <Card.Header>
         <Card.Title>{surveyObj.name} </Card.Title>
       </Card.Header>
@@ -43,7 +47,7 @@ const mapStateToProps = (state) => {
     selectedSurvey: state.selectedSurvey
   }
 }
-
+// eslint-disable-next-line
 SurveyItem = connect(mapStateToProps)(SurveyItem)
 
 export default SurveyItem;
