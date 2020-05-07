@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 function FlashMessage(props) {
+  // styling
   const err = {
     background: '#FF5733 ',
     padding: '20px',
@@ -19,7 +20,7 @@ function FlashMessage(props) {
     marginTop: '10px',
     fontWeight: 'bolder'
   };
-
+// defining message and catching for empty strings
   if (props.successMessage.length > 0) {
     return <div style={success}>{props.successMessage}</div>;
   } else if (props.errorMessage.length > 0) {

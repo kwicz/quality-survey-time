@@ -5,15 +5,21 @@ import { connect } from 'react-redux';
 import { useHistory, Redirect } from "react-router-dom";
 
 function SurveySubmissions(props) {
+  // Destructuring selectedSurvey from redux store
   const { name, authorEmail, survey, surveyId} = props.selectedSurvey;
 
+  // React-Router for redirect
   const history = useHistory();
+
+  // Load Firestore
   const firestore = useFirestore();
 
   function deleteSubmission() {
     firestore.delete({ collection: 'submissions', doc: surveyId });
     history.push('/');
   }
+
+  // Build render if selectedSurvey has values
   if (props.selectedSurvey !== "") {
     return (
       <React.Fragment>
@@ -28,11 +34,9 @@ function SurveySubmissions(props) {
             return ( <div key={index}>
               <p>Question 1: {item.question} </p>
               <p>Answer : {item.answer} </p>
-        
               </div>
               )
             })}
-            
           </Card.Body>
 
           <Button onClick={deleteSubmission} variant="danger">

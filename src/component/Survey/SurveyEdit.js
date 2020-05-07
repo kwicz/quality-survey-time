@@ -10,11 +10,9 @@ function SurveyEdit(props) {
   const history = useHistory();
   const { selectedSurvey, dispatch } = props;
   const firestore = useFirestore();
-  // const surveys = useFirestore().collection('surveys');
 
   function updateSurveyInFirestore(event) {
     event.preventDefault();
-    // props.onEditSurvey();
     const propertiesToUpdate = {
       name: event.target.name.value,
       question1: event.target.question1.value,

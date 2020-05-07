@@ -3,6 +3,9 @@
 
 #### By Drake Wilcox, Dusty McCord, K. Wicz
 
+## VIEW DEPLOYED SITE: 
+https://quality-survey-time.firebaseapp.com/signin
+
 ## Components Hierarchy
 
 ![Diagram](src/img/mockupv01.jpg)
@@ -77,7 +80,7 @@ Instead, it will copy all the configuration files and the transitive dependencie
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
 ## Support and Contact Details
-_Have a bug or an issue with this application? [Open a new issue](https://github.com/dustatron/social-media-clone/issues) here on GitHub._
+_Have a bug or an issue with this application? [Open a new issue](https://github.com/dustatron/quality-survey-time/issues) here on GitHub._
 
 ## Technologies Used
 * This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

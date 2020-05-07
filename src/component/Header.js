@@ -5,9 +5,7 @@ import { Link } from 'react-router-dom';
 function Header() {
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-  
-        <Navbar.Brand as={Link} to="/">Quality Survey Time</Navbar.Brand>
-
+      <Navbar.Brand as={Link} to="/">Quality Survey Time</Navbar.Brand>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="mr-auto">

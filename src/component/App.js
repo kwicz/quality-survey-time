@@ -16,23 +16,25 @@ import { connect } from 'react-redux';
 import styled from 'styled-components';
 import img from '../img/bg06.jpg';
 
-const AppStyle = styled.div`
-  background-image: url(${img});
-  background-size: cover;
-  min-height: 95vh;
-  padding: 50px;
-  `;
 
 function App(props) {
+  // Styling object
+  const AppStyle = styled.div`
+    background-image: url(${img});
+    background-size: cover;
+    min-height: 95vh;
+    padding: 50px;
+    `;
   
+  // Handle updating redux state for selectedSurvey
   const { dispatch } = props;
 
   function handleUpdateSelectedSurvey(action) {  
     dispatch(action);
   }
 
+  // Render and set routs
   return (
-    
     <Router>
       <Header />
         <AppStyle>

@@ -11,6 +11,7 @@ function SurveySubmit(props) {
   const history = useHistory();
   const [ selected, setSelected ] = useState([])
   
+  // Will take submission data and insert it into the submissions table in Firebase
   function addSubmissionToFirestore(event) {
     event.preventDefault();
     history.push('/');
@@ -26,6 +27,7 @@ function SurveySubmit(props) {
     return submissions.add(submitThis);
   }
 
+  // If survey is selected, return survey to user. Otherwise, redirect user to their dashboard.
 	if (props.selectedSurvey === '') {
 		return <Redirect to="/takesurvey" />;
 	} else {
@@ -33,31 +35,29 @@ function SurveySubmit(props) {
 			<div>
 				<h1>{props.selectedSurvey.name}</h1>
         <Form onSubmit={addSubmissionToFirestore}>
-				{/* //questions section */}
-				{props.selectedSurvey.survey.map((q, index) => {
-					return (
-						<Card style={{ marginBottom: 5 }} key={index}>
-							<Card.Header>
-								<Card.Title>
-									Question {index + 1}: {q.question}
-								</Card.Title>
-							</Card.Header>
-							<Card.Body>
-							
-                {q.answers.map((answer, index) => (
-                  <Form.Check key={answer + index}
-                    name={q.question} 
-                    type="radio" 
-                    id={index} 
-                    label={answer}
-                    onChange={() => {setSelected([ ...selected,{question: q.question, answer: answer} ])}}
-                    value={answer}/>
-                ))}
-							
-							</Card.Body>
-						</Card>
-					);
-				})}
+          {/* //questions section */}
+          {props.selectedSurvey.survey.map((q, index) => {
+            return (
+              <Card style={{ marginBottom: 5 }} key={index}>
+                <Card.Header>
+                  <Card.Title>
+                    Question {index + 1}: {q.question}
+                  </Card.Title>
+                </Card.Header>
+                <Card.Body>
+                  {q.answers.map((answer, index) => (
+                    <Form.Check key={answer + index}
+                      name={q.question} 
+                      type="radio" 
+                      id={index} 
+                      label={answer}
+                      onChange={() => {setSelected([ ...selected,{question: q.question, answer: answer} ])}}
+                      value={answer}/>
+                  ))}
+                </Card.Body>
+              </Card>
+            );
+          })}
           <Button type="submit">Submit </Button>
         </Form>
 			</div>

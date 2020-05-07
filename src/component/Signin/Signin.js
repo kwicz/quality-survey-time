@@ -5,10 +5,12 @@ import FlashMessage from './FlashMessage';
 import {useHistory} from 'react-router-dom';
 
 function Signin() {
+  // destructing state
   const [ successMessage, setSuccessMessage ] = useState('');
   const [ errorMessage, setErrorMessage ] = useState('');
   const history = useHistory();
 
+  // styles
   const cardStyle = {
     marginTop: '3rem'
   };
@@ -18,6 +20,7 @@ function Signin() {
     const email = event.target.email.value;
     const password = event.target.password.value;
 
+    // check for authorization an route to dashboard
     firebase
       .auth()
       .signInWithEmailAndPassword(email, password)
@@ -33,7 +36,9 @@ function Signin() {
 
   return (
     <React.Fragment>
+
       <FlashMessage successMessage={successMessage} errorMessage={errorMessage} />
+      
       <Card style={cardStyle}>
         <Card.Title>
           <Card.Header> LogIn </Card.Header>

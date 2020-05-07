@@ -10,21 +10,19 @@ function Signup(props) {
   const cardStyle = {
     marginTop: '3rem'
   };
-
   function doSignUp(event) {
     event.preventDefault();
     const email = event.target.email.value;
     const password = event.target.password.value;
+    // adds email and password to firebase
     firebase
       .auth()
       .createUserWithEmailAndPassword(email, password)
       .then(function() {
         setSuccessMessage('successfully signed up!');
-        console.log('successfully signed up!');
       })
       .catch(function(error) {
         setErrorMessage(error.message);
-        console.log(error.message);
       });
   }
   return (

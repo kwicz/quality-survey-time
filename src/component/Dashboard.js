@@ -4,26 +4,49 @@ import { useFirestoreConnect, isLoaded } from 'react-redux-firebase';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import firebase from 'firebase/app';
-import {v4} from "uuid";
-
+import { v4 } from 'uuid';
 
 function Dashboard(props) {
-  // Find current user in Firebase
+  ////////////////////////////////////////////////////////
+  ////////////////  Firebase Setup  /////////////////////
+  //////////////////////////////////////////////////////
 
-  const loadingStyle = {
-    textAlign: 'center'
-  };
+  // Allows us to see current user.
   const auth = firebase.auth();
-  useFirestoreConnect([ { collection: 'surveys' }, { collection: 'submissions' } ]);
 
-  // Handle loading surveys user has created and taken
+  // Loading firebase database collections as veriables.
+  useFirestoreConnect([ { collection: 'surveys' }, { collection: 'submissions' } ]);
   const surveys = useSelector((state) => state.firestore.ordered.surveys);
   const submissions = useSelector((state) => state.firestore.ordered.submissions);
 
+  ////////////////////////////////////////////////////////
+  ///////////  Building Render Objects  /////////////////
+  //////////////////////////////////////////////////////
+
+  // Initializing reusable variables
   let renderSurveyList;
   let renderSubmissionList;
-	let user;
-  //Surveys you made
+  let user;
+
+  // Sets selectedSurvey in redux
+  function handleSelectedSurveyClick(surveyObj) {
+    const action = {
+      type: 'UPDATE_SELECTED',
+      name: surveyObj.name,
+      survey: surveyObj.survey,
+      surveyId: surveyObj.id,
+      authorEmail: surveyObj.authorEmail,
+      authorId: surveyObj.authorId
+    };
+    props.onSurveySelect(action);
+  }
+
+  // Simple inline style object
+  const loadingStyle = {
+    textAlign: 'center'
+  };
+
+  // Surveys user made
   if (isLoaded(surveys) && isLoaded(auth) && auth.currentUser != null) {
     user = auth.currentUser;
     renderSurveyList = surveys
@@ -53,22 +76,9 @@ function Dashboard(props) {
     );
   }
 
-  function handleSelectedSurveyClick(surveyObj) {
-    const action = {
-      type: 'UPDATE_SELECTED',
-      name: surveyObj.name,
-      survey: surveyObj.survey,
-      surveyId: surveyObj.id,
-      authorEmail: surveyObj.authorEmail,
-      authorId: surveyObj.authorId
-    };
-    props.onSurveySelect(action);
-  }
-
-  //surveys I have taken
-
+  // surveys user taken
   if (isLoaded(submissions) && isLoaded(auth) && auth.currentUser != null) {
-		user = auth.currentUser;
+    user = auth.currentUser;
     renderSubmissionList = submissions
       .filter((item) => {
         return item.userId === user.uid;
@@ -95,6 +105,10 @@ function Dashboard(props) {
       </div>
     );
   }
+
+  ////////////////////////////////////////////////////////////////////
+  ///////////  Checks login state before rendering  /////////////////
+  //////////////////////////////////////////////////////////////////
 
   if (isLoaded(auth) && auth.currentUser !== null && user.email !== undefined) {
     return (

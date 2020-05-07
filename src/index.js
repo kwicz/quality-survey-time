@@ -12,9 +12,11 @@ import rootReducer from './reducers';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'firebase/auth';
 
+// Load project with devtools
 const store = createStore(rootReducer,window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 
+// Firebase config
 const rrfProps = {
   firebase,
   config: {

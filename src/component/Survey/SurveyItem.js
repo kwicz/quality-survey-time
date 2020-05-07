@@ -6,13 +6,16 @@ import { useHistory } from "react-router-dom";
 
 function SurveyItem(props) {
 
+  // Establish styles for page
   const cardStyle = {
     margin: '20px',
   }
 
+  // Set variables
   const history = useHistory();
   const { surveyObj } = props;
   
+  // Set redux store to take in user's selected survey
   function handleTakeSurveyClick() {
     const action = { 
       type: "UPDATE_SELECTED",
@@ -25,7 +28,7 @@ function SurveyItem(props) {
     props.whereSurveyClicked(action);
     history.push('/submitsurvey');
   }
-
+  
   return (
     <Card style={cardStyle}>
       <Card.Header>
@@ -47,6 +50,7 @@ const mapStateToProps = (state) => {
     selectedSurvey: state.selectedSurvey
   }
 }
+
 // eslint-disable-next-line
 SurveyItem = connect(mapStateToProps)(SurveyItem)
 
