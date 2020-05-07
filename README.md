@@ -8,8 +8,7 @@
 ![Diagram](src/img/mockupv01.jpg)
 
 ## User Stories
-<details>
-  <summary>Expand user stories for this project</summary>
+
 
 |Component|Story|
 |:---:|:---|
@@ -18,7 +17,7 @@
 |New User|A user should be able to sign up, sign in, and sign out.|
 |Dashboard|A user should have their own dashboard which lists the surveys they've created.|
 |Dashboard data visualization|Bonus: A user should be able to see the combined data on a survey in their dashboard. For instance, if a survey provides a 1-5 rating, return an average rating for all surveys.|
-</details>
+
 
 ## Installation/Setup
 
