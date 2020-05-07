@@ -28,7 +28,6 @@ function SurveyCreate(props) {
   };
 
   const updateQuestionInState = (event) => {
-    // surveyState = [ {question: "", answers: []},  {question: "", answers: []}]
 
     const [ name, indexString ] = event.target.name.split(',');
     const index = parseInt(indexString);
