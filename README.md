@@ -6,12 +6,15 @@
 ## VIEW DEPLOYED SITE: 
 https://quality-survey-time.firebaseapp.com/signin
 
+## Page Preview
+
+![Diagram](src/img/pageView.png)
+
+
 ## Components Hierarchy
 
 ![Diagram](src/img/mockupv01.jpg)
 
-## Page Preview
-![Diagram](src/img/pageView.png)
 
 ## User Stories
 
