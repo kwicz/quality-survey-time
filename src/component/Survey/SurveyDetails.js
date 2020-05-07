@@ -26,6 +26,7 @@ function SurveyDetails(props) {
   }
 
   if (props.selectedSurvey !== "") {
+    
     const thisSurvey = submissions.filter((item) => {return item.surveyId === surveyId});
     const surveyCount = thisSurvey.length;
     return (

@@ -14,7 +14,7 @@ import Dashboard from './Dashboard';
 import SurveyDetails from './Survey/SurveyDetails';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import img from '../img/bg03.jpg';
+import img from '../img/bg05.jpg';
 
 const AppStyle = styled.div`
   background-image: url(${img});
