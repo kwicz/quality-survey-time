@@ -7,10 +7,6 @@
 
 ![Diagram](src/img/mockupv01.jpg)
 
-## Site Components Wireframe
-![Wireframe](public/TaproomWireframe.png)
-coming....
-
 ## User Stories
 <details>
   <summary>Expand user stories for this project</summary>
