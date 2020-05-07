@@ -10,6 +10,9 @@ https://quality-survey-time.firebaseapp.com/signin
 
 ![Diagram](src/img/mockupv01.jpg)
 
+## Page Preview
+![Diagram](src/img/pageView.png)
+
 ## User Stories
 
 
