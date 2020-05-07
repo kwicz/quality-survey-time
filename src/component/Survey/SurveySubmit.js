@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { Form, Card, Button } from 'react-bootstrap';
@@ -10,18 +9,19 @@ import { useFirestore } from 'react-redux-firebase';
 function SurveySubmit(props) {
   const submissions = useFirestore().collection('submissions');
   const history = useHistory();
-  const [ selected, setSelected ] = useState({})
+  const [ selected, setSelected ] = useState([])
   
   function addSubmissionToFirestore(event) {
     event.preventDefault();
     history.push('/');
     const submitThis = {
-      title: props.selectedSurvey.name,
+      authorId: props.selectedSurvey.authorId,
+      authorEmail: props.selectedSurvey.authorEmail,
+      name: props.selectedSurvey.name,
       userId: firebase.auth().currentUser.uid,
       userEmail: firebase.auth().currentUser.email,
       surveyId: props.selectedSurvey.surveyId,
-      survey: {...selected}
-      
+      survey: [...selected]
     }
     return submissions.add(submitThis);
   }
@@ -50,7 +50,7 @@ function SurveySubmit(props) {
                     type="radio" 
                     id={index} 
                     label={answer}
-                    onChange={() => {setSelected({ ...selected,[q.question]: answer })}}
+                    onChange={() => {setSelected([ ...selected,{question: q.question, answer: answer} ])}}
                     value={answer}/>
                 ))}
 							
@@ -64,8 +64,6 @@ function SurveySubmit(props) {
 		);
 	}
 }
-
-SurveySubmit.propTypes = {};
 
 const mapStateToProps = (state) => {
 	return {

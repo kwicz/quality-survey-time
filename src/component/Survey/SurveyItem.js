@@ -1,13 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Card, Button } from 'react-bootstrap';
-import { useFirestore } from 'react-redux-firebase';
 import { connect } from 'react-redux';
 import { useHistory } from "react-router-dom";
 
 function SurveyItem(props) {
   const history = useHistory();
-  const { surveyObj, dispatch } = props;
+  const { surveyObj } = props;
   // const firestore = useFirestore();
 
   function handleTakeSurveyClick() {

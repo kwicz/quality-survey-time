@@ -2,17 +2,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Card, Button } from 'react-bootstrap';
 import SurveyItem from './SurveyItem';
-import { useFirestore, isLoaded } from 'react-redux-firebase';
+import { useFirestore, useFirestoreConnect } from 'react-redux-firebase';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { useHistory } from "react-router-dom";
 
 function SurveyDetails(props) {
-  const { name, authorEmail, survey, surveyId} = props.selectedSurvey;
-
+  const { name, authorEmail, survey, surveyId } = props.selectedSurvey;
   const history = useHistory();
-
   const firestore = useFirestore();
+  useFirestoreConnect([ { collection: 'submissions' } ]);
+  const submissions = useSelector((state) => state.firestore.ordered.submissions);
 
   function onClickingEdit() {
     console.log('edit button click');
@@ -23,6 +24,11 @@ function SurveyDetails(props) {
     history.push('/');
   }
 
+  const thisSurvey = submissions.filter((item) => {return item.surveyId === surveyId});
+
+  const surveyCount = thisSurvey.length;
+
+
   return (
     <React.Fragment>
       <Card>
@@ -32,6 +38,7 @@ function SurveyDetails(props) {
         <Card.Body>
           <p>Survey Title: {name}</p>
           <p>Created By: {authorEmail}</p>
+          <p>Number of Times Taken: {surveyCount}</p>
           {survey.map((item) => {
            return ( <div>
             <p>Question 1: {item.question} </p>

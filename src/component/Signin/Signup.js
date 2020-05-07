@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 import { Card, Form, Button } from 'react-bootstrap';
 import FlashMessage from './FlashMessage';
 import firebase from 'firebase/app';
@@ -61,7 +60,5 @@ function Signup(props) {
     </React.Fragment>
   );
 }
-
-Signup.propTypes = {};
 
 export default Signup;

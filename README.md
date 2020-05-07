@@ -24,7 +24,6 @@ coming....
 |Dashboard data visualization|Bonus: A user should be able to see the combined data on a survey in their dashboard. For instance, if a survey provides a 1-5 rating, return an average rating for all surveys.|
 </details>
 
-
 ## Installation/Setup
 
 Clone the project by typing this command into your terminal.
@@ -34,7 +33,7 @@ git clone https://github.com/dustatron/quality-survey-time.git
 
 Navigate to the new project folder by typing:
 ```sh
-cd tap-room-react
+cd quality-survey-time
 ```
 
 Install all required packages with this command:

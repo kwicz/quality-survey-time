@@ -6,8 +6,11 @@ X update survey making to be awesome.
 - Search function
 
 *Thursday*
+- # of times survey has been taken on survey details page
 - deploying. google firebase.
 - data visualization.
 - make pretty.
 - New page that shows how you answered surveys
-- # of times survey has been taken on survey details page
+- Update readme
+- Cleanup code
+- leave comments with notes

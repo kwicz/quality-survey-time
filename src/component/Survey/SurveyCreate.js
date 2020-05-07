@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import { useFirestore } from 'react-redux-firebase';
-import { Form, Button, Card, FormControl } from 'react-bootstrap';
+import { Form, Button, Card, } from 'react-bootstrap';
 import firebase from 'firebase/app';
 import { Redirect } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
-import Question from './Question';
 
 function SurveyCreate(props) {
 	const surveys = useFirestore().collection('surveys');

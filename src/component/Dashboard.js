@@ -1,15 +1,16 @@
 import React from 'react';
-import { Card, Button, Row, Col, Spinner } from 'react-bootstrap';
-import { useFirestoreConnect, isEmpty, firestore, useFirestore, withFirestore, isLoaded } from 'react-redux-firebase';
+import { Card, Row, Col, Spinner } from 'react-bootstrap';
+import { useFirestoreConnect, isLoaded } from 'react-redux-firebase';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import firebase from 'firebase/app';
 
 function Dashboard(props) {
-	// Find current user
-	const auth = firebase.auth();
+	// Find current user in Firebase
 
-	useFirestoreConnect([ { collection: 'surveys' } ]);
+	const auth = firebase.auth();
+	useFirestoreConnect([ { collection: 'surveys' }, { collection: 'submissions' } ]);
+
 
 	// Handle loading surveys user has created and taken
 	const surveys = useSelector((state) => state.firestore.ordered.surveys);
@@ -18,6 +19,7 @@ function Dashboard(props) {
 	let renderSurveyList;
 	let renderSubmissionList;
 
+	//Surveys you made
 	if (isLoaded(surveys) && isLoaded(auth) && auth.currentUser != null) {
 		var user = auth.currentUser;
 		renderSurveyList = surveys
@@ -27,7 +29,7 @@ function Dashboard(props) {
 			.map((a) => (
 				<Link
 					onClick={() => {
-						handleSurveyClick(a);
+						handleSelectedSurveyClick(a);
 					}}
 					to="surveydetails"
 					id={a.id}
@@ -45,7 +47,7 @@ function Dashboard(props) {
 		);
 	}
 
-	function handleSurveyClick(surveyObj) {
+	function handleSelectedSurveyClick(surveyObj) {
 		const action = {
 			type: 'UPDATE_SELECTED',
 			name: surveyObj.name,
@@ -57,6 +59,9 @@ function Dashboard(props) {
 		props.onSurveySelect(action);
 	}
 
+
+	//surveys I have taken
+	
 	if (isLoaded(submissions) && isLoaded(auth) && auth.currentUser != null) {
 		var user = auth.currentUser;
 		renderSubmissionList = submissions
@@ -66,11 +71,11 @@ function Dashboard(props) {
 			.map((a) => (
 				<Link
 					onClick={() => {
-						handleSurveyClick(a);
+						handleSelectedSurveyClick(a);
 					}}
-					to="surveydetails"
-					id={a.id}
-					key={a.id}
+					to="surveysubmissions"
+					id={a.userId}
+					key={a.userId}
 					title={a.name}
 				>
 					<li>{a.name}</li>
@@ -84,7 +89,9 @@ function Dashboard(props) {
 		);
 	}
 
-	if (isLoaded(auth) && auth.currentUser != null && user.email != undefined) {
+
+
+	if (isLoaded(auth) && auth.currentUser !== null && user.email !== undefined) {
 		return (
 			<React.Fragment>
 				<h1>Welcome, {user.email}!</h1>
@@ -124,7 +131,7 @@ function Dashboard(props) {
 					<Col>
 						<Card>
 							<Card.Title>Surveys You've Taken</Card.Title>
-							<Card.Body />
+							<Card.Body>{renderSubmissionList}</Card.Body>
 						</Card>
 					</Col>
 				</Row>

@@ -1,5 +1,4 @@
 import React from 'react';
-import SurveyController from './Survey/SurveyController';
 import Header from './Header';
 import { Container, Col, Row } from 'react-bootstrap';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
@@ -10,6 +9,7 @@ import SurveyCreate from './Survey/SurveyCreate';
 import SurveyEdit from './Survey/SurveyEdit';
 import SurveyList from './Survey/SurveyList';
 import SurveySubmit from './Survey/SurveySubmit';
+import SurveySubmissions from './Survey/SurveySubmissions';
 import Dashboard from './Dashboard';
 import SurveyDetails from './Survey/SurveyDetails';
 import { connect } from 'react-redux';
@@ -17,7 +17,7 @@ import { connect } from 'react-redux';
 
 function App(props) {
   
-  const { surveyObj, dispatch } = props;
+  const { dispatch } = props;
 
   function handleUpdateSelectedSurvey(action) {  
     dispatch(action);
@@ -81,6 +81,13 @@ function App(props) {
             <Row>
               <Col md={{ span: 8, offset: 2 }}>
                 <SurveyDetails />
+              </Col>
+            </Row>
+          </Route>
+          <Route path="/surveysubmissions">
+            <Row>
+              <Col md={{ span: 8, offset: 2 }}>
+                <SurveySubmissions />
               </Col>
             </Row>
           </Route>
